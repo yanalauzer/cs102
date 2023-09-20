@@ -7,7 +7,10 @@ def calc(num_1: float, num_2: float = 0, command: str = '') -> tp.Union[float, s
     if command == "-":
         return num_1 - num_2
     if command == "/":
-        return num_1 / num_2
+        if num_2 == 0:
+             return f"На ноль делить нельзя"
+        else:
+             return num_1 / num_2
     if command == "*":
         return num_1 * num_2
     if command == "^":
@@ -21,9 +24,15 @@ def calc(num_1: float, num_2: float = 0, command: str = '') -> tp.Union[float, s
     if command == "tg":
         return math.tan(num_1)
     if command == "ln":
-        return math.log(num_1)
+        if num_1 <= 0:
+            return f"нельзя найти логарифм такого числа"
+        else:
+            return math.log(num_1)
     if command == "lg":
-        return math.log10(num_1)
+        if num_1 <= 0:
+            return f"нельзя найти логарифм такого числа"
+        else:
+            return math.log10(num_1)
     else:
         return f"Неизвестный оператор: {command!r}."
 
