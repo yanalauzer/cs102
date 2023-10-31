@@ -11,7 +11,18 @@ def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
     ''
     """
     ciphertext = ""
-    # PUT YOUR CODE HERE
+    for i, _ in enumerate(plaintext):
+        if plaintext[i].isalpha():
+            a = ord(plaintext[i])
+            if plaintext[i].isupper() and a >= 91 - shift:
+                chiphertext += chr(a - 26 + shift)
+            elif plaintext[i].islower() and a >= 123 - shift:
+                chiphertext += chr(a - 26 + shift)
+            else:
+                chiphertext += chr(a + shift)
+        else:
+            chiphertext += plaintext[i]
+            
     return ciphertext
 
 
