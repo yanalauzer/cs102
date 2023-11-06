@@ -52,5 +52,4 @@ def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
             continue
         else:
             plaintext += ciphertext[i]
-
     return plaintext
