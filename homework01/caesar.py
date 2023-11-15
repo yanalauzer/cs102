@@ -14,10 +14,10 @@ def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
     for i, letter in enumerate(plaintext):
         if plaintext[i].isalpha():
             a = ord(plaintext[i])
-            if plaintext[i].isupper() and a >= ord('A') - shift:
-                ciphertext += chr(a - ord('A') + shift)
-            elif plaintext[i].islower() and a >= ord('a') - shift:
-                ciphertext += chr(a - ord('a') + shift)
+            if plaintext[i].isupper() and a >= ord("A") - shift:
+                ciphertext += chr(a - ord("A") + shift)
+            elif plaintext[i].islower() and a >= ord("a") - shift:
+                ciphertext += chr(a - ord("a") + shift)
             else:
                 ciphertext += chr(a + shift)
         else:
@@ -42,10 +42,10 @@ def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
     for i, letter in enumerate(ciphertext):
         if ciphertext[i].isalpha():
             a = ord(ciphertext[i])
-            if ciphertext[i].isupper() and a <= ord('A') + shift:
-                plaintext += chr(a + ord('A') - shift)
-            elif ciphertext[i].islower() and a <= ord('a') + shift:
-                plaintext += chr(a + ord('a') - shift)
+            if ciphertext[i].isupper() and a <= ord("A") + shift:
+                plaintext += chr(a + ord("A") - shift)
+            elif ciphertext[i].islower() and a <= ord("a") + shift:
+                plaintext += chr(a + ord("a") - shift)
             else:
                 plaintext += chr(a - shift)
         elif ciphertext.isspace():

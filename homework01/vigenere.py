@@ -13,7 +13,7 @@ def encrypt_vigenere(plaintext: str, keyword: str) -> str:
     while len(plaintext) > len(keyword):
         keyword += keyword[a]
         a += 1
-    for i, _ in enumerate(keyword):
+    for i, letter in enumerate(keyword):
         if keyword[i].isupper():
             key = ord(keyword[i]) - 65
             # 65-й элемент - A. А - сдвиг на 0.
@@ -49,7 +49,7 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
     while len(ciphertext) > len(keyword):
         keyword += keyword[ab]
         ab += 1
-    for i, _ in enumerate(keyword):
+    for i, letter in enumerate(keyword):
         if keyword[i].isupper():
             key = ord(keyword[i]) - 65
         elif keyword[i].islower():
