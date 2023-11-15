@@ -33,6 +33,7 @@ def encrypt_vigenere(plaintext: str, keyword: str) -> str:
             ciphertext += plaintext[i]
     return ciphertext
 
+
 def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
     """
     Decrypts a ciphertext using a Vigenere cipher.
