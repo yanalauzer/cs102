@@ -24,6 +24,7 @@ def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
             ciphertext += plaintext[i]
     return ciphertext
 
+
 def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
     """
     Decrypts a ciphertext using a Caesar cipher.
