@@ -144,8 +144,9 @@ def solve(grid: tp.List[tp.List[str]]) -> tp.Optional[tp.List[tp.List[str]]]:
     values = find_possible_values(grid, (a, b))
     for i in values:
         grid[a][b] = i
-        if solve(grid):
-            return grid
+        solution = solve(grid)
+        if solution is not None:
+            return solution
         grid[a][b] = "."
 
     return None
