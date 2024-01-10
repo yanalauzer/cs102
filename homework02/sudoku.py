@@ -148,32 +148,24 @@ def solve(grid: tp.List[tp.List[str]]) -> tp.Optional[tp.List[tp.List[str]]]:
             return grid
         grid[a][b] = "."
 
-    return None
+    return []
 
 
 def check_solution(solution: tp.List[tp.List[str]]) -> bool:
     """Если решение solution верно, то вернуть True, в противном случае False"""
     # TODO: Add doctests with bad puzzles
-    if (
-        solution is None
-        or not isinstance(solution, list)
-        or not all(isinstance(row, list) and all(isinstance(cell, str) for cell in row) for row in solution)
-    ):
-        return False
     for i in range(9):
-        for j in range(9):
-            if solution[i][j] == ".":
-                return False
-            new = get_col(solution, (i, j))
-            new2 = get_row(solution, (i, j))
-            new3 = get_block(solution, (i, j))
-
-            if len(set(new)) < 9:
-                return False
-            if len(set(new2)) < 9:
-                return False
-            if len(set(new3)) < 9:
-                return False
+        if solution[i].count(".") == 0:
+            for j in range(9):
+                s = (i, j)
+                if (
+                    (get_col(solution, s)).count(solution[i][j]) > 1
+                    or (get_row(solution, s)).count(solution[i][j]) > 1
+                    or (get_block(solution, s)).count(solution[i][j]) > 1
+                ):
+                    return False
+        else:
+            return False
     return True
 
 
