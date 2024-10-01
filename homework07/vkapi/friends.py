@@ -4,7 +4,6 @@ import typing as tp
 from time import sleep
 
 import requests
-
 from vkapi.config import VK_CONFIG
 
 # from vkapi.exceptions import APIError
@@ -19,7 +18,7 @@ class FriendsResponse:
 
 
 def get_friends(
-        user_id: int, count: int = 5000, offset: int = 0, fields: tp.Optional[tp.List[str]] = None
+    user_id: int, count: int = 5000, offset: int = 0, fields: tp.Optional[tp.List[str]] = None
 ) -> FriendsResponse:
     """
     Получить список идентификаторов друзей пользователя или расширенную информацию
@@ -80,13 +79,13 @@ class MutualFriends(tp.TypedDict):
 
 
 def get_mutual(
-        source_uid: tp.Optional[int] = None,
-        target_uid: tp.Optional[int] = None,
-        target_uids: tp.Optional[tp.List[int]] = None,
-        order: str = "",
-        count: tp.Optional[int] = None,
-        offset: int = 0,
-        progress=None,
+    source_uid: tp.Optional[int] = None,
+    target_uid: tp.Optional[int] = None,
+    target_uids: tp.Optional[tp.List[int]] = None,
+    order: str = "",
+    count: tp.Optional[int] = None,
+    offset: int = 0,
+    progress=None,
 ) -> tp.Union[tp.List[int], tp.List[MutualFriends]]:
     """
     Получить список идентификаторов общих друзей между парой пользователей.
@@ -121,7 +120,7 @@ def get_mutual(
 
     chunk_size = 100
     for i in progress(range(0, len(target_uids), chunk_size)):
-        chunk = target_uids[i: i + chunk_size]
+        chunk = target_uids[i : i + chunk_size]
 
         for target in chunk:
             target_friends = get_friends(target)
@@ -138,4 +137,4 @@ def get_mutual(
     return mutual_friends
 
 
-print(get_mutual(291413875,  98104709))
+print(get_mutual(291413875, 98104709))

@@ -1,9 +1,9 @@
 import datetime as dt
 import statistics
 import typing as tp
+
 import vkapi
 import vkapi.friends
-
 from vkapi.friends import get_friends
 
 
